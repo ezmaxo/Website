@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Squirrel Care Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2E7D32;
+            --primary-light: #4CAF50;
+            --primary-dark: #1B5E20;
+            --accent: #FF9800;
+            --text: #263238;
+            --text-light: #546E7A;
+            --background: #F5F5F5;
+            --card: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --gradient-start: #E8F5E9;
+            --gradient-end: #BBDEFB;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text);
+            line-height: 1.6;
+            font-family: 'Open Sans', sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            background: var(--card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 30px 30px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23E8F5E9" width="100" height="100"/><path fill="%234CAF50" opacity="0.2" d="M0,0 L100,100 L100,0 L0,100 Z"/></svg>');
+            background-size: cover;
+            position: relative;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--primary-light) 50%, transparent 100%);
+        }
+        
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px var(--shadow);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid var(--primary);
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #E8F5E9;
+            font-size: 1.9rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-dark);
+            margin: 20px 0 15px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            font-weight: 500;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 5px;
+        }
+        
+        li::marker {
+            color: var(--primary-light);
+        }
+        
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .note-card {
+            background: linear-gradient(135deg, #E8F5E9 0%, #BBDEFB 100%);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .note-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+        }
+        
+        .note-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .note-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .note-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 25px 0;
+            background: var(--card);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+        
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        
+        th {
+            background: linear-gradient(to bottom, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+        
+        th:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 15%;
+            height: 70%;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(232, 245, 233, 0.4);
+        }
+        
+        tr:hover {
+            background-color: rgba(187, 222, 251, 0.3);
+        }
+        
+        .timetable {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 25px;
+        }
+        
+        .timetable-card {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(135deg, #E8F5E9 0%, #BBDEFB 100%);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+        }
+        
+        .timetable-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .timetable-card h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-light);
+            color: var(--primary-dark);
+        }
+        
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .food-card {
+            background: linear-gradient(135deg, #E8F5E9 0%, #BBDEFB 100%);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .food-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+        }
+        
+        .food-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .food-card h4 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--primary-light);
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, #E8F5E9 0%, #FFF9C4 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+            border-left: 5px solid var(--accent);
+            position: relative;
+        }
+        
+        .tip-box h3 {
+            color: var(--accent);
+            margin-top: 0;
+        }
+        
+        .warning {
+            color: #D32F2F;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(211, 47, 47, 0.1);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .icon-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .icon-header i {
+            font-size: 28px;
+            color: var(--primary);
+            background: rgba(76, 175, 80, 0.2);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #E0E0E0;
+            border-radius: 4px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1s ease-in-out;
+        }
+        
+        .print-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+        }
+        
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.4);
+        }
+        
+        .print-btn i {
+            margin-right: 10px;
+        }
+        
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                margin: 15px auto;
+                border-radius: 10px;
+            }
+            
+            header {
+                padding: 30px 20px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+            
+            section {
+                padding: 20px 15px;
+                margin-bottom: 30px;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+            }
+            
+            .icon-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .icon-header i {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+            
+            .notes-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .note-card {
+                padding: 20px 15px;
+            }
+            
+            .note-card i {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            th, td {
+                padding: 12px 15px;
+                font-size: 0.95rem;
+            }
+            
+            .timetable {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .timetable-card {
+                min-width: 100%;
+            }
+            
+            .food-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+            }
+            
+            .food-card {
+                padding: 15px 10px;
+            }
+            
+            .tip-box {
+                padding: 20px 15px;
+            }
+            
+            .print-btn {
+                padding: 14px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+            
+            .note-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .food-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            th, td {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .progress-container {
+                margin: 20px 0;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                font-size: 12pt;
+            }
+            
+            .container {
+                box-shadow: none;
+                margin: 0;
+                border-radius: 0;
+                max-width: 100%;
+            }
+            
+            section {
+                page-break-before: always;
+                page-break-inside: avoid;
+                box-shadow: none;
+                border-left: 3px solid var(--primary);
+                margin-bottom: 20pt;
+                padding: 15pt;
+            }
+            
+            .notes-grid, .timetable {
+                page-break-inside: avoid;
+            }
+            
+            .note-card, .timetable-card {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #E0E0E0;
+            }
+            
+            .print-btn, .progress-container {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 18pt;
+            }
+            
+            h2 {
+                font-size: 16pt;
+            }
+            
+            h3 {
+                font-size: 14pt;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-squirrel"></i> Baby Squirrel Care Guide</h1>
+            <p class="subtitle">Complete feeding instructions and care tips for orphaned baby squirrels in India</p>
+        </header>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="reading-progress"></div>
+        </div>
+        
+        <div class="content">
+            <section id="important-notes">
+                <div class="icon-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h2>1. Important Notes Before Starting</h2>
+                </div>
+                <div class="notes-grid">
+                    <div class="note-card">
+                        <i class="fas fa-temperature-high"></i>
+                        <h3>Warmth First</h3>
+                        <p>Baby squirrels are fragile. Keep them warm (around 99°F) before feeding. Use a heating pad set on low or a warm water bottle wrapped in cloth.</p>
+                    </div>
+                    <div class="note-card">
+                        <i class="fas fa-syringe"></i>
+                        <h3>Feeding Tools</h3>
+                        <p>Use a small dropper, syringe, or soft nipple for feeding. Sterilize all equipment before each use to prevent bacterial infections.</p>
+                    </div>
+                    <div class="note-card">
+                        <i class="fas fa-thermometer-half"></i>
+                        <h3>Formula Temperature</h3>
+                        <p>Never feed cold formula or milk — it must be slightly warm (around 98°F). Test on your wrist like for a human baby.</p>
+                    </div>
+                    <div class="note-card">
+                        <i class="fas fa-wine-bottle"></i>
+                        <h3>Buffalo Milk</h3>
+                        <p>Buffalo milk should always be diluted (more on that below). Undiluted milk can cause digestive issues and diarrhea.</p>
+                    </div>
+                    <div class="note-card">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Weaning</h3>
+                        <p>At 6+ weeks, slowly start introducing solid foods. Monitor their reaction to new foods and introduce one at a time.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="age-roadmap">
+                <div class="icon-header">
+                    <i class="fas fa-road"></i>
+                    <h2>2. Age-wise Roadmap & Feeding Timetable</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Age (Weeks)</th>
+                            <th>Milk Feeding</th>
+                            <th>Other Foods</th>
+                            <th>Frequency</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>4–5 Weeks</strong></td>
+                            <td>Buffalo milk diluted with warm water (3 parts milk + 1 part water). Add a pinch of honey if needed for taste.</td>
+                            <td>None yet. Only milk.</td>
+                            <td>Every 3–4 hours (5–6 times/day). Approximately 2-4ml per feeding.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5–6 Weeks</strong></td>
+                            <td>Same diluted milk, slightly thicker (4:1 milk-water ratio). Can add a drop of vitamin supplement if available.</td>
+                            <td>Tiny pieces of banana, apple, or soft soaked bread. Introduce slowly in pea-sized amounts.</td>
+                            <td>Milk: 4–5 times/day.<br>Fruits: 1–2 times/day (tiny amounts).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6–7 Weeks</strong></td>
+                            <td>Thicker milk (almost undiluted but still slightly warm). Can begin introducing puppy milk replacer as alternative.</td>
+                            <td>Add peanuts (without skin), soaked almonds, and tiny bits of roti/chapati. Always provide fresh water.</td>
+                            <td>Milk: 3–4 times/day.<br>Solids: 2–3 times/day.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>7–8 Weeks</strong></td>
+                            <td>Start reducing milk, increase solids. Transition to water in shallow dish.</td>
+                            <td>More fruits (papaya, guava, apple), dry fruits (almonds, cashews), cooked rice, and small grains.</td>
+                            <td>Milk: 2 times/day.<br>Solids: 3–4 times/day.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section id="daily-timetable">
+                <div class="icon-header">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h2>3. Daily Feeding Timetable Example</h2>
+                </div>
+                <div class="timetable">
+                    <div class="timetable-card">
+                        <h3><i class="fas fa-child"></i> For a 4–5 week-old (mostly milk)</h3>
+                        <ul>
+                            <li><strong>6:30 AM</strong> – Warm diluted milk (2-3ml)</li>
+                            <li><strong>10:00 AM</strong> – Warm diluted milk (2-3ml)</li>
+                            <li><strong>1:00 PM</strong> – Warm diluted milk (2-3ml)</li>
+                            <li><strong>4:00 PM</strong> – Warm diluted milk (2-3ml)</li>
+                            <li><strong>7:00 PM</strong> – Warm diluted milk (2-3ml)</li>
+                            <li><strong>10:30 PM</strong> – Warm diluted milk (last feed before sleep)</li>
+                        </ul>
+                        <p class="warning"><i class="fas fa-exclamation-triangle"></i> Never overfeed - stomach should feel rounded but not tight</p>
+                    </div>
+                    <div class="timetable-card">
+                        <h3><i class="fas fa-squirrel"></i> For a 7–8 week-old (more solids)</h3>
+                        <ul>
+                            <li><strong>7:00 AM</strong> – Small piece of banana or apple</li>
+                            <li><strong>9:00 AM</strong> – Milk feed (warm, reduced quantity)</li>
+                            <li><strong>12:00 PM</strong> – Small roti pieces with tiny mashed papaya</li>
+                            <li><strong>3:00 PM</strong> – Few soaked almonds or peanuts</li>
+                            <li><strong>6:00 PM</strong> – Milk feed (less quantity)</li>
+                            <li><strong>9:00 PM</strong> – A small piece of apple or chapati</li>
+                        </ul>
+                        <p class="warning"><i class="fas fa-exclamation-triangle"></i> Always remove uneaten fresh food after 2-3 hours</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="foods-available">
+                <div class="icon-header">
+                    <i class="fas fa-utensil-spoon"></i>
+                    <h2>4. Foods Easily Available in Indian Homes</h2>
+                </div>
+                <div class="food-grid">
+                    <div class="food-card">
+                        <h4><i class="fas fa-apple-alt"></i> Fruits</h4>
+                        <p>Banana (mashed), apple (grated), guava (seeds removed), papaya (mashed), chikoo (mashed)</p>
+                    </div>
+                    <div class="food-card">
+                        <h4><i class="fas fa-seedling"></i> Nuts</h4>
+                        <p>Peanuts (unsalted, crushed), almonds (soaked 12hrs, peeled, crushed), cashews (unsalted, crushed)</p>
+                    </div>
+                    <div class="food-card">
+                        <h4><i class="fas fa-bread-slice"></i> Grains</h4>
+                        <p>Cooked rice (soft), roti (soft pieces, soaked in milk if needed), soaked bread (in diluted milk)</p>
+                    </div>
+                    <div class="food-card">
+                        <h4><i class="fas fa-carrot"></i> Vegetables</h4>
+                        <p>Carrot (finely shredded), boiled corn (kernels only, after 7 weeks), cucumber (small pieces)</p>
+                    </div>
+                    <div class="food-card">
+                        <h4><i class="fas fa-wine-bottle"></i> Others</h4>
+                        <p>Diluted buffalo milk (3:1 ratio), honey (small pinch for taste if needed), electrolyte water (for hydration)</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="weaning-tips">
+                <div class="icon-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h2>5. Weaning & Care Tips</h2>
+                </div>
+                <ul>
+                    <li>By 8–9 weeks, the squirrel will start eating more solids and less milk. Offer variety to ensure balanced nutrition.</li>
+                    <li>Always provide fresh drinking water in a small, shallow dish that they can't tip over.</li>
+                    <li>Keep them clean and warm in a soft cloth nest. Change bedding daily to maintain hygiene.</li>
+                    <li class="warning"><i class="fas fa-exclamation-triangle"></i> Avoid chocolate, spicy foods, or salted snacks — toxic for squirrels. Also avoid citrus fruits and onions.</li>
+                </ul>
+                
+                <div class="tip-box">
+                    <h3><i class="fas fa-info-circle"></i> Additional Care Tip</h3>
+                    <p>As the squirrel grows, provide safe branches for chewing and climbing to help with natural behavior development. Always supervise interactions with other pets. Squirrels need mental stimulation, so provide toys and opportunities to forage for food.</p>
+                </div>
+                
+                <div class="tip-box">
+                    <h3><i class="fas fa-stethoscope"></i> Health Monitoring</h3>
+                    <p>Regularly check for signs of illness: lethargy, loss of appetite, diarrhea, or difficulty breathing. Baby squirrels can dehydrate quickly, so monitor their hydration by gently pinching the skin - if it doesn't snap back quickly, they may need fluids.</p>
+                </div>
+            </section>
+            
+            <button class="print-btn" onclick="window.print()">
+                <i class="fas fa-print"></i> Print or Save as PDF
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Reading progress bar
+        window.addEventListener('scroll', function() {
+            const winHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset;
+            const trackLength = docHeight - winHeight;
+            const progress = Math.floor((scrollTop / trackLength) * 100);
+            document.getElementById('reading-progress').style.width = progress + '%';
+        });
+        
+        // Simple animation for cards when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.note-card, .food-card, .timetable-card');
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            setTimeout(() => {
+                cards.forEach(card => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
